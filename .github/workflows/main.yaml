@@ -11,8 +11,8 @@ jobs:
         - uses: actions/checkout@v2
         - name: SAST
           run: |
-            echo '10.34.160.75 registry.fortidevsec.forticloud.com' | sudo tee -a /etc/hosts
-            cat /etc/hosts
-            ping registry.fortidevsec.forticloud.com
+            #echo '10.34.160.75 registry.fortidevsec.forticloud.com' | sudo tee -a /etc/hosts
+            #cat /etc/hosts
+            #ping registry.fortidevsec.forticloud.com
             env | grep -E "GITHUB_ACTIONS|GITHUB_RUN_NUMBER|GITHUB_REF_NAME|GITHUB_SHA" > /tmp/env
-            docker run --pull always --rm --env-file /tmp/env --add-host fortidevsec.forticloud.com:10.34.160.75 --mount type=bind,source=$PWD,target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
+            docker run --pull always --rm --env-file /tmp/env --add-host registry.fortidevsec.forticloud.com:10.34.160.75 --add-host fortidevsec.forticloud.com:10.34.160.75 --mount type=bind,source=$PWD,target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
