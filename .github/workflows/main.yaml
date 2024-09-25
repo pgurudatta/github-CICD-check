@@ -1,18 +1,19 @@
 name: FortiDevSec Scanner CI
 on:
-    push:
-        branches: [ main ]
-    pull_request:
-        branches: [ main ]
+  push:
+   branches: [ main ]
+  pull_request:
+   branches: [ main ]
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-        - name: SAST
-          run: |
-            #echo '10.34.160.75 registry.fortidevsec.forticloud.com' | sudo tee -a /etc/hosts
-            #cat /etc/hosts
-            #ping registry.fortidevsec.forticloud.com
-            env | grep -E "GITHUB_ACTIONS|GITHUB_RUN_NUMBER|GITHUB_REF_NAME|GITHUB_SHA" > /tmp/env
-            docker run --pull always --rm --env-file /tmp/env --add-host registry.fortidevsec.forticloud.com:10.34.160.75 --add-host fortidevsec.forticloud.com:10.34.160.75 --mount type=bind,source=$PWD,target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
+  build:
+   runs-on: self-hosted
+   steps:
+   - uses: actions/checkout@v2
+   - name: SAST
+     run: |
+        env
+        echo "=========================="
+        env | grep -E "GITHUB_ACTIONS|GITHUB_RUN_NUMBER|GITHUB_REF_NAME|GITHUB_SHA" > /tmp/env
+        cat /tmp/env
+        docker run --rm --env-file /tmp/env --add-host fortidevsec.forticloud.com:10.34.160.75 --mount type=bind,source="$PWD",target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
+        #docker run --rm --env GITHUB_ACTIONS=true --env GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER --env GITHUB_REF_NAME=$GITHUB_REF_NAME --env GITHUB_SHA=$GITHUB_SHA --add-host fortidevsec.forticloud.com:10.34.160.120 --mount type=bind,source="$PWD",target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
