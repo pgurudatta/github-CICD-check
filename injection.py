@@ -12,3 +12,4 @@ def get_user(username):
 username = input("Enter username: ")
 user = get_user(username)
 print(user)
+
