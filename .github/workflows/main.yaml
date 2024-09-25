@@ -12,5 +12,6 @@ jobs:
         - name: SAST
           run: |
             echo '10.34.160.75 registry.fortidevsec.forticloud.com' | sudo tee -a /etc/hosts
+            cat /etc/hosts
             env | grep -E "GITHUB_ACTIONS|GITHUB_RUN_NUMBER|GITHUB_REF_NAME|GITHUB_SHA" > /tmp/env
             docker run --pull always --rm --env-file /tmp/env --add-host fortidevsec.forticloud.com:10.34.160.75 --mount type=bind,source=$PWD,target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
