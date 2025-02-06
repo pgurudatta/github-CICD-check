@@ -1,7 +1,6 @@
 id:
-  org: d59caca1-5207-4441-ad92-8680adcc5a47
-  app: 1107dcc3-80d0-45a9-9e33-22bbf2bdce40
-  
+  org: ed76717a-7231-41fb-9c05-c9aef0a60187
+  app: bd1d23c0-9205-49ba-bfa9-b733981e6dc7
 
 # If below settings are not configured, scans will be performed for all supported scanners.
 scanners:
@@ -13,9 +12,10 @@ scanners:
 #  - dast
 
 # Configures languages for sast scanner. If not configured, scans will be performed on all supported languages
-#languages:
-#  - javascript
-#  - python
+languages:
+  - javascript
+  - typescript
+  - dockerfile
 
 # Configures target url where dynamic scan should be performed.
 #dast:
@@ -31,7 +31,7 @@ scanners:
 
 # CI/CD pipeline fails when risk rating(range 0-9) exceeds the configured value.
 fail_pipeline:
-  risk_rating: 5
+  risk_rating: 6
 
 # Only for FortiDevSec OnPrem users. Cloud users should keep it commented
 #on_prem:
