@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 const DB = {
     host: 'localhost',
     user: 'root',
-    password: 'AVvEV4Ovf4saFi7UxJTq1#',
+    password: 'AVvEV4Ovf4saFi7Uxbjbj#$%JTq1#',
     database: 'testdb'
 }
 
