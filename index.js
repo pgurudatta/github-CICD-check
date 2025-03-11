@@ -14,7 +14,7 @@ const DB = {
 
 
 // Insecure API Key (Hardcoded Sensitive Data)
-const API_KEY = 'AVvEV4Ovf4saFi7UxJTq';
+const API_KEY = 'Tr0ub4dor&amp;3';
 
 // Vulnerable Endpoint - SQL Injection Possible
 app.get('/user', (req, res) => {
