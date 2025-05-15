@@ -16,5 +16,6 @@ jobs:
         env | grep -E "GITHUB_ACTIONS|GITHUB_RUN_NUMBER|GITHUB_REF_NAME|GITHUB_SHA" > /tmp/env
         cat /tmp/env
         #docker run --pull always --rm --env-file /tmp/env --add-host fortidevsec.forticloud.com:10.34.160.75 --mount type=bind,source="$PWD",target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
-        docker run --pull always --rm --env-file /tmp/env --mount type=bind,source="$PWD",target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
+        #docker run --pull always --rm --env-file /tmp/env --mount type=bind,source="$PWD",target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
         #docker run --rm --env GITHUB_ACTIONS=true --env GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER --env GITHUB_REF_NAME=$GITHUB_REF_NAME --env GITHUB_SHA=$GITHUB_SHA --add-host fortidevsec.forticloud.com:10.34.160.120 --mount type=bind,source="$PWD",target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
+        docker run --pull always --rm --add-host fds-fortionprem.com:10.34.160.99 --env-file /tmp/env --mount type=bind,source="$PWD",target=/scan registry.fds-fortionprem.com/fdevsec_sast:latest main s -o 18ac3036-8e01-46a3-b9f2-8fab2d0e9a0f -a ef653466-008b-434c-9fb3-958bb73b67a8 -r 5 -m https://fds-fortionprem.com
